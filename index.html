@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content="RecSys Challenge 2021">
+   <meta name="keywords"
+      content="Recommender Systems, RecSys Challenge, Social Media, Tweet Engagement">
+   <meta name="author" content="RecSysChallenge 2021 Organizers">
+   <!-- <link rel="icon" href="http://recsys.acm.org/wp-content/themes/primo-wp/favicon.ico"> -->
+   <title>RecSys Challenge 2021</title>
+   <!-- CSS -->
+   <link href="./css/bootstrap.min.css" rel="stylesheet">
+   <link href="./css/ekko-lightbox.min.css" rel="stylesheet">
+   <link href="./css/main.css" rel="stylesheet">
+</head>
+
+<body>
+   <div id="top" class="container">
+      <div class="header clearfix" style="padding-bottom:5px;">
+         <span style="float:left; padding-right: 15px;">
+            <!-- <img src="./images/logo.png" alt="logo" width="50"> </span> <span style="float:right; padding-right: 15px;"> -->
+            <a style="text-decoration: none;" href="https://twitter.com/recsyschallenge" title="Twitter"> <img
+                  src="./images/ico-twitter.svg" alt="" width="24">
+            </a> </span>
+         <h3><a href="http://recsyschallenge.com/2021" style="text-decoration:none;">
+               RecSys Challenge 2021</a>
+         </h3>
+         <div style="margin-top:30px;font-family: Georgia,Helvetica,Arial,sans-serif">
+            <ul class="nav nav-pills navbar-nav navbar-left">
+               <!--
+                     <li role="presentation" class="dropdown">              <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span>
+                       </a>              <ul class="dropdown-menu">
+                         <li><a href="#about">About</a></li>                <li><a href="#scenario">Scenario</a></li>
+                         <li><a href="#challenges">Challenges</a></li>                <li><a href="#evaluation">Evaluation</a></li>
+                         <li><a href="#dataset">Dataset</a></li>                <li><a href="#baseline">Baseline</a>
+                     </ul>            </li>-->
+               <!--
+                     <li role="presentation" class="dropdown">              <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Participate <span class="caret"></span>
+                       </a>              <ul class="dropdown-menu">
+                         <li><a href="#participation">Participation</a></li>                <li><a href="#leaderboard">Leaderboard</a>
+                         <li><a href="#rules">Rules</a></li>                <li><a href="#questions">Ask questions</a></li>
+                         <li><a href="#prizes">Prizes</a></li>              </ul>
+                     </li>-->
+               <li role="presentation"><a href="#about">About</a></li>
+               <!--<li role="presentation"><a href="#publications">Publications</a></li>-->
+               <li role="presentation"><a href="#participation">Participation</a></li>
+               <li role="presentation"><a href="#dates">Timeline</a></li>
+               <!-- <li role="presentation"><a href="#program">Program</a></li> -->
+               <li role="presentation"><a href="#organizers">Organizers</a></li>
+               <li role="presentation"><a href="https://recsys.acm.org/recsys21/" style="color:lightgray;"
+                     target="\_blank">RecSys 2021</a></li>
+            </ul>
+         </div>
+      </div>
+      <!-- ABOUT -->
+      <div id="about" class="lead" align="justify">
+         <h1>About</h1>
+         <p>
+            The RecSys Challenge 2021 will be organized by <a href="http://www.en.poliba.it/">
+               Politecnico di Bari</a>, <a href="https://ethz.ch/en.html">ETH Zürich</a>, <a href="https://ju.se/en">Jönköping University</a>, and the data set will be provided by <a href="https://twitter.com">Twitter</a>.
+               The challenge focuses on a real-world task of tweet engagement prediction in a dynamic environment. For 2021, the challenge considers four different engagement types: Likes, Retweet, Quote, and replies. </p><p>
+This year's challenge brings the problem even closer to Twitter's real recommender systems by introducing latency constraints. We will also increase the data size to encourage novel methods. Also, the data density will be increased in terms of the graph where users are considered to be nodes and interactions as edges. </p><p>
+The goal is twofold: to predict the probability of different engagement types of a target user for a set of tweets based on heterogeneous input data <strong>while providing fair recommendations</strong>.
+We are conscious that <strong>multi-goal optimization</strong> considering accuracy and fairness will be particularly challenging.
+However, we believe that the recommendation community is nowadays mature enough to face the challenge of providing <strong>accurate and, at the same time, fair recommendations</strong>.
+         </p>
+      </div>
+
+      <!-- <div id="publications" class="lead" align="justify">
+         <h1>Publications</h1>
+            <p>Luca Belli, Sofia Ira Ktena, Alykhan Tejani, Alexandre Lung-Yut-Fon, Frank Portman, Xiao Zhu, Yuanpu Xie, Akshay Gupta, Michael Bronstein, Amra Delić, Gabriele Sottocornola, Walter Anelli, Nazareno Andrade, Jessie Smith, and Wenzhe Shi. 2020. <a href="https://arxiv.org/abs/2004.13715" target="_blank">Privacy-Preserving Recommender Systems Challenge on Twitter's Home Timeline</a>, arXiv:2004.13715.</p>
+      </div> -->
+
+      <div id="participation" class="lead" align="justify">
+         <h1>Participation and Data</h1>
+
+         <p>
+            Twitter will make available a <strong>public dataset of close to 1 billion data points</strong>, >40 million each day over 28 days. Week 1 - 3 will be used for training and week 4 for evaluation and testing. Each datapoint contains the tweet along with engagement features, user features, and tweet features.
+         </p>
+         <!-- <br/> -->
+         <a href="https://recsys-twitter.com/" target="_blank">
+         <button type="button" class="btn btn-lg  btn-primary">Registration & Data Access</button>
+         </a>
+         <p>If you are experiencing any issues, please <a target="_blank" href="https://groups.google.com/d/forum/recsys-challenge-2021">notify the organizers.</a></p>
+         <!-- <p>
+            A strong point of this challenge are the recent regulations on data protection and privacy. The challenge data set will be compliant: if a user deletes a Tweet, or their data from Twitter, the dataset will be promptly updated.
+         </p> -->
+         <!-- <br/> -->
+         <p>
+            <strong>Participation for this challenge is subject to your acceptance of these <a href="RecSys2021TermsandConditions.pdf" target="_blank">Terms & Conditions</a> , and your successful completion of the steps required within, including the registration and approval process with the <a target="_blank" href="https://developer.twitter.com/en">Twitter Developer Program</a></strong>
+         </p>
+
+         <p>
+            <p>
+               The <a href="RecSys2021TermsandConditions.pdf" target="_blank">Terms & Conditions</a></strong> already require that all submissions are accompanied by reproducible code, so that we can inspect winning solutions in detail:<em> “Your Submission must include the source code and any related information used to derive the results contained in your Submission. The source code must be released under an open-source license (Apache 2.0). A third party should be able to use your submitted source to regenerate your results.”</em> Furthermore, we explicitly state in our rules that <strong>NO</strong> de-anonymization or access to data from Twitter users and user behavior from the Twitter API other than that in the challenge dataset is allowed. Enriching the data with other data sources remains possible.
+            </p>
+            <p>
+               If any of the rules mentioned in the <a href="RecSys2021TermsandConditions.pdf" target="_blank">Terms & Conditions</a></strong> (and explained further above) are broken and thus discovered by the organizers in the code submission, the participant(s) that the submission belongs to will be disqualified from the competition. As mentioned in the Terms and Conditions: <em>“Organizers reserve the right, in their sole discretion, to disqualify any participant who makes a Submission that does not meet the Requirements or is in violation of these Terms.”</em>
+            </p>
+
+         </p>
+
+      </div>
+      <div id="dates">
+         <h1>Timeline<sup><a class="dropup" style="font-size:10px;" href="#top"><span class="caret"></span>
+                  top</a></sup></h1>
+         <p>
+            <font size="5">Note: the timeline is subject to slight modifications.</font>
+         </p>
+         <table class="table table-striped lead">
+            <thead>
+               <tr>
+                  <th>When?</th>
+                  <th>What?</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><strong>19 March, 2021</strong></td>
+                  <td>
+                     <strong>open to registration</strong>
+                  </td>
+               </tr>
+                <tr>
+                   <td><strong>22 March, 2021</strong></td>
+                   <td>
+                      <strong>Dataset Release & RecSys Challenge Starts</strong>
+                      <p>Training and validation datasets released</p>
+                   </td>
+                </tr>
+                 <tr>
+                    <td><strong>30 March, 2021</strong></td>
+                    <td>
+                       <strong>Evaluation server released</strong>
+                    </td>
+                 </tr>
+               <tr>
+                  <td>June 9, 2021</td>
+                  <td>
+                     <strong>Validation datasets released</strong>
+                     <p>Test server released</p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>June 23, 2021</td>
+                  <td>
+                     <strong>RecSys Challenge ends</strong>
+                  </td>
+               </tr>
+               <tr>
+                  <td>June 30, 2021</td>
+                  <td>
+                     <strong>Announcement of the final leaderboard and winners</strong>
+                     <strong>Paper submission for RecSys Challenge Workshop</strong>
+                  </td>
+               </tr>
+               <tr>
+                     <td><strike>July 13, 2021</strike></br><strong>July 20, 2021</strong></td>
+                     <td>
+                        <strong>Paper Submission Due</strong>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td><strike>August 10</strike> August 31, 2021</td>
+                     <td>
+                        <strong>Paper Acceptance Notifications</strong>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td><strike>August 23</strike> September 5, 2021</td>
+                     <td>
+                        <strong>Camera-ready Papers Due</strong>
+                     </td>
+                  </tr>
+               <tr>
+                  <td>September 27 - October 1, 2021</td>
+                  <td>Workshop taking place as part of the <a href="https://recsys.acm.org/recsys21/">ACM RecSys
+                        conference</a>.
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <!-- GUIDELINES -->
+      <div id="guidelines" class="lead" align="justify">
+         <h1>Paper Submission Guidelines<sup><a class="dropup" style="font-size:10px;" href="#top"><span
+                     class="caret"></span> top</a></sup></h1>
+         <p><font color="green"><strong>Submission website:</strong></font> <a target="_blank" href="https://easychair.org/conferences/?conf=recsyschallenge2021">EasyChair</a><font style="color: red;"> <strong>Now Active!</strong></font>
+         </p>
+         <ul>
+            <li>All participants of the challenge are invited to submit if they consider their submission particularly
+               effective, novel, otherwise interesting, or exploiting identified particularities of the data.</li>
+            <li>
+               <font color="green"><strong>Note:</strong></font> paper submission is mandatory if you want to be
+               eligible for a prize. Accepted papers are given an oral and a poster presentation slot at the
+               workshop. At least one author of each accepted paper must attend the workshop and present their work.
+               Please note that a badly written paper or absence of presence at workshop, may prevent you from being
+               eligible for the prize. Please contact the workshop organization if none of the authors will be able to
+               attend the workshop.
+            </li>
+            <li>
+               <font color="green"><strong>Page limit:</strong></font> 7 pages + references (<a
+                  href="https://www.acm.org/publications/proceedings-template">ACM SIG Format</a>)
+                  <!-- <em>Note that this is
+                     in reference to the old two-column format \documentclass[sigconf]{acmart}
+                  </em> -->
+                  Note: This is in reference to the latest single-column ACM template.
+            </li>
+            <li>Anonymization of submissions is not required; please include your team name in abstract and text, as
+               well as a link to your code repository, the achieved score, and a reference to the RecSys Challenge
+               Website (<a href="http://www.recsyschallenge.com/2021/">http://www.recsyschallenge.com/2021/</a>). Note:
+               This will be replaced with a reference to an overview paper in the RecSys proceedings for the
+               camera-ready version.</li>
+            <!-- <li>
+               <font color="green"><strong>Submission website:</strong></font> <a href="https://easychair.org/conferences/?conf=recsyschallenge2020">EasyChair</a>
+            </li> -->
+            <li>The submitted papers will be evaluated based on novelty, clarity, and presented empirical results.</li>
+            <li>Each paper will be reviewed by at least three PC members.</li>
+            <!-- <li>Accepted papers will be published in the ACM Digital Library.</li> -->
+            <li>Our proceedings will be published in the ACM Digital Library within its International Conference Proceedings Series.</li>
+            <li>Accepted papers must be presented in the RecSys Challenge Workshop (either as an oral presentation or
+               poster).</li>
+         </ul>
+         </br></br>
+
+         <!--
+         <font color="green"><strong>Link to the workshop website:</strong></font></br>
+         <a
+            href="https://recsys.acm.org/recsys19/challenge-workshop/">https://recsys.acm.org/recsys19/challenge-workshop/</a>
+         -->
+
+      </div>
+
+
+      <div class="lead" id="program">
+         <h1>Workshop Program and Accepted Papers</h1>
+         <em>The RecSys Challenge Workshop will take place on October 1st, 2021<br> <strong> All times are CEST</strong></em>
+         <table class="table table-striped lead" align="left">
+            <tbody>
+               <tr>
+                  <th>Time</th>
+                  <th> Session </th>
+               </tr>
+               <tr><td>14:00<br />-<br /> 14:05</th><th><strong>Opening</strong></td></tr>
+               <tr><td>14:05<br />-<br /> 14:30</td><td><strong>Keynote - The 2021 RecSys Challenge Dataset. Fairness is not optional (Wenzhe Shi, Twitter)</strong></td></tr>
+               <tr><td>14:30<br />-<br /> 15:00</td><td><strong>Academic Leaderboard 3rd place - Team JKU-AIWarriors in the ACM Recommender Systems Challenge 2021: Lightweight XGBoost Recommendation Approach Leveraging User Features</strong> <em>ALEXANDER KRAUCK, DAVID PENZ, MARKUS SCHEDL</em></td></tr>
+               <tr><td>15:00<br />-<br /> 15:30</td><td><strong>General Leaderboard 3rd place - User Engagement Modeling with Deep Learning and Language Models</strong> <em>MAKSIMS VOLKOVS, FELIPE PEREZ, ZHAOYUE CHENG, JIANING SUN, SAJAD NOROUZI, ANSON WONG, PAWEL JANKIEWICZ, BARUM RHO</em></td></tr>
+               <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+               <tr style="color:gray;"><td>15:00<br />-<br /> 16:00</td><td>Coffee Break</td></tr>
+               <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+               <tr><td>16:00<br />-<br /> 16:30</td><td><strong>Academic Leaderboard 2nd place - Addressing the cold-start problem with a two-branch architecture for fair tweet recommendation</strong> <em>PERE GILABERT, SANTI SEGUÍ</em></td></tr>
+               <tr><td>16:30<br />-<br /> 17:00</td><td><strong>General Leaderboard 2nd place - Synerise at RecSys 2021: Twitter user engagement prediction with a fast neural model</strong> <em>MICHAŁ DANILUK, JACEK DĄBROWSKI, BARBARA RYCHALSKA, KONRAD GOŁUCHOWSKI</em></td></tr>
+               <tr><td>17:00<br />-<br /> 17:30</td><td><strong>Academic Leaderboard 1st place - Lightweight and Scalable Model for Tweet Engagements Predictions in a Resource-constrained Environment</strong> <em>LUCA CARMINATI, GIACOMO LODIGIANI, PIETRO MALDINI, SAMUELE META, STIVEN METAJ, ARCANGELO PISA, ALESSANDRO SANVITO, MATTIA SURRICCHIO, FERNANDO B<em>PÉREZ MAURERA, CESARE BERNARDIS, MAURIZIO FERRARI DACREMA</em></td></tr>
+               <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+               <tr style="color:gray;"><td>17:30<br />-<br /> 18:00</td><td>Coffee Break</td></tr>
+               <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+               <tr><td>18:00<br />-<br /> 18:30</td><td><strong>General Leaderboard 1st place - GPU Accelerated Boosted Trees and Deep Neural Networks for Better Recommender Systems</strong> <em>CHRIS DEOTTE, BO LIU, BENEDIKT SCHIFFERER, GILBERTO TITERICZ</em></td></tr>
+               <tr><td>18:30<br />-<br /> 18:40</td><td><strong>Panel with Winners and Twitter (Luca Belli and Alexandre Lung-Yut-Fong, Twitter) moderated by Ludovico Boratto</strong></td></tr>
+               <tr><td>18:40<br />-<br /> 19:00</td><td><strong>Panel on Fairness Challenges and Evaluation:</strong> moderated by <strong>Ludovico Boratto</strong>, with <strong>Martha Larson</strong>, <strong>Michael Ekstrand</strong>, <strong>Luca Belli</strong> (Twitter), <strong>Kristian Lum</strong> (Twitter)</td></tr>
+               <tr><td>19:00<br />-<br /> 19:10</td><td><strong>Closing Remarks</strong></td></tr>
+               <!--<tr>
+                  <td>2:00 PM<br />-<br /> 2:10 PM</td>
+                  <td>
+                     <strong>Workshop Opening</strong>: <em>Vito Walter Anelli, Amra Delic, Gabriele Sottocornola, Jessie Smith, Nazareno Andrade</em>
+
+                  </td>
+               </tr>
+
+               <tr>
+                  <td>2:10 PM<br />-<br /> 2:40 PM</td>
+                  <td>
+                     <strong>Introduction to the Challenge</strong>: <em>Twitter Team</em>
+
+                  </td>
+               </tr>
+
+               <tr>
+                  <td>2:40 PM <br />-<br /> 3:10 PM</td>
+                  <td>
+                     <strong>3rd place - </strong>A Stacking Ensemble Model for Prediction of Multi-type Tweet Engagements: <em>Shuhei Goda, Naomichi Agata and Yuya Matsumura</em>
+                     <br>
+                     <strong>25 min Presentation + 5 min Q&A</strong>
+
+                  </td>
+               </tr>
+
+               <tr>
+                  <td>3:10 PM <br />-<br /> 3:30 PM</td>
+                  <td>
+
+                        A combination of classification based methods for recommending tweets: <em>Sumit Sidana
+                        </em>
+                        <br>
+                        <strong>15 min Presentation + 5 min Q&A</strong>
+                  </td>
+               </tr>
+
+               <tr style="color:gray;">
+                  <td>3:30 PM <br />-<br /> 4:30 PM </td>
+                  <td align="center"> <br />Break</td>
+               </tr>
+
+               <tr>
+                  <td>4:30 PM <br />-<br /> 4:50 PM</td>
+                  <td>
+
+                     Engaging with Tweets: The Missing Dataset On Social Media: <em>Seyed Ali Alhosseini, Raad Bin Tareaf and Christoph Meinel
+                        </em>
+                        <br>
+                        <strong>15 min Presentation + 5 min Q&A</strong>
+                  </td>
+               </tr>
+
+               <tr>
+                  <td>4:50 PM <br />-<br /> 5:20 PM</td>
+                  <td>
+                     <strong>2nd place - </strong>Predicting Twitter Engagement With Deep Language Models: <em>Maksims Volkovs, Zhaoyue Cheng, Mathieu Ravaut, Hojin Yang, Kevin Shen, Jin Peng Zhou, Anson Wong, Saba Zuberi and Aidan Gomez
+                     <br>
+                     <strong>25 min Presentation + 5 min Q&A</strong>
+
+                  </td>
+               </tr>
+
+               <tr>
+                  <td>5:20 PM <br />-<br /> 5:40 PM</td>
+                  <td>
+                     Leveraging User Embeddings and Text to Improve CTR Predictions With Deep Recommender Systems: <em>Carlos Patiño, Camilo Velásquez, Juan Muñoz, Juan Gutiérrez, David Valencia and Cristian Bartolome Aramburu
+                     </em>
+                        </em>
+                        <br>
+                        <strong>15 min Presentation + 5 min Q&A</strong>
+                  </td>
+               </tr>
+
+               <tr>
+                  <td>5:40 PM <br />-<br /> 6:00 PM</td>
+                  <td>
+                     Multi-Objective Blended Ensemble For Highly Imbalanced Sequence Aware Tweet Engagement Prediction: <em>Nicolò Felicioni, Andrea Donati, Luca Conterio, Luca Bartoccioni, Davide Yi Xian Hu, Cesare Bernardis and Maurizio Ferrari Dacrema
+                     </em>
+                        </em>
+                        <br>
+                        <strong>15 min Presentation + 5 min Q&A</strong>
+                  </td>
+               </tr>
+
+
+
+               <tr style="color:gray;">
+                  <td>6:00 PM <br />-<br /> 7:00 PM </td>
+                  <td align="center"> <br />Break</td>
+               </tr>
+
+               <tr>
+                  <td>7:00 PM <br />-<br /> 7:30 PM</td>
+                  <td>
+                     <strong>1st place - </strong>GPU Accelerated Feature Engineering and Training for Recommender Systems: <em>Benedikt Schifferer, Gilberto Titericz, Chris Deotte, Christof Henkel, Kazuki Onodera, Jiwei Liu, Bojan Tunguz, Even Oldridge, Gabriel De Souza Pereira Moreira and Ahmet Erdem
+                     </em>
+                     <br>
+                     <strong>25 min Presentation + 5 min Q&A</strong>
+
+                  </td>
+               </tr>
+
+               <tr>
+                  <td>7:30 PM <br />-<br /> 7:50 PM</td>
+                  <td>
+                     Gradient Boosting and Language Model Ensemble for Tweet Recommendation: <em>Pere Gilabert and Santi Seguí
+                     </em>
+                        </em>
+                        <br>
+                        <strong>15 min Presentation + 5 min Q&A</strong>
+                  </td>
+               </tr>
+
+               <tr>
+                  <td>7:50 PM <br />-<br /> 8:10 PM</td>
+                  <td>
+                     Why Are Deep Learning Models Not Consistently Winning Recommender Systems Competitions Yet?: <em>Dietmar Jannach, Gabriel de Souza Pereira Moreira and Even Oldridge
+                     </em>
+                        </em>
+                        <br>
+                        <strong>15 min Presentation + 5 min Q&A</strong>
+                  </td>
+               </tr>
+
+               <tr>
+                  <td>8:10 PM <br />-<br /> 8:30 PM</td>
+                  <td>
+                     <strong>Final Remarks & Panel Discussion</strong>
+                     <ul>
+                        <li>
+                           Dietmar Jannach (University of Klagenfurt)
+                        </li>
+                        <li>
+                           Chris Deotte (NVIDIA RAPIDS.AI)
+                        </li>
+                        <li>
+                           Maksims Volkovs (Layer 6)
+                        </li>
+                        <li>
+                           Luca Belli (Twitter)
+                        </li>
+                        <li>
+                           Wenzhe Shi (Twitter)
+                        </li>
+                     </ul>
+
+
+                  </td>
+               </tr>-->
+
+            </tbody>
+         </table>
+      </div>
+
+      <!-- ORGANIZERS -->
+      <div id="organizers" class="lead">
+         <h1>Program Committee <sup><a class="dropup" style="font-size:10px;" href="#top"><span class="caret"></span>
+                  top</a></sup></h1>
+         <ul>
+            <li>Nazareno Andrade, Universidade Federal de Campina Grande</li>
+            <li>Vito Walter Anelli, Politecnico di Bari</li>
+            <li>Luca Belli, Twitter Cortex</li>
+            <li>Alejandro Bellogin, Universidad Autonoma de Madrid</li>
+            <li>Ludovico Boratto, University of Cagliari</li>
+            <li>Yashar Deldjoo, Polytechnic University of Bari</li>
+            <li>Tommaso Di Noia, Politecnico di Bari</li>
+            <li>Linus W. Dietz, Technical University of Munich</li>
+            <li>Mehdi Elahi, University of Bergen</li>
+            <li>Bruce Ferwenda, Jönköping University</li>
+            <li>Dietmar Jannach, University of Klagenfurt</li>
+            <li>Saikishore Kalloori, ETH Zurich</li>
+            <li>Peter Knees, Vienna University of Technology</li>
+            <li>Julia Neidhardt, Vienna University of Technology</li>
+            <li>Frank Portman, Twitter</li>
+            <li>Francesco Ricci, Free University of Bozen-Bolzano</li>
+            <li>Wenzhe Shi, Twitter</li>
+            <li>Gabriele Sottocornola, Libera Università di Bozen-Bolzano</li>
+            <li>Fabio Stella, Dipartimento di Informatica, Sistemistica e Comunicazione, Universita' degli Studi di Milano-Bicocca, Milano, IT.</li>
+            <li>Alykhan Tejani, Twitter</li>
+            <li>Marko Tkalcic, University of Primorska</li>
+            <li>Markus Zanker, Free University of Bozen-Bolzano</li>
+
+
+         </ul>
+         <h1>Academic Organizers <sup><a class="dropup" style="font-size:10px;" href="#top"><span class="caret"></span>
+                  top</a></sup></h1>
+         <ul>
+            <li><a href="http://sisinflab.poliba.it/anelli/" target="\_blank">Walter Anelli</a>, Politecnico di Bari, Italy</li>
+            <li><a href="https://inf.ethz.ch/people/people-atoz/person-detail.MjYxNjY1.TGlzdC8zMDQsLTIxNDE4MTU0NjA=.html" target="\_blank">Saikishore Kalloori</a>, ETH Zürich, Switzerland</li>
+            <li><a href="https://ju.se/en/personinfo.html?sign=FERBRU&lang=en" target="\_blank">Bruce Ferwerda</a>, Jönköping University, Sweden </li>
+         </ul>
+         <h1>RecSys Industry Mentors <sup><a class="dropup" style="font-size:10px;" href="#top"><span class="caret"></span>
+            top</a></sup></h1>
+         <ul>
+            <li><a href="https://twitter.com/__lucab" target="\_blank">Luca Belli</a>, Twitter</li>
+            <li><a href="https://www.imperial.ac.uk/people/m.bronstein">Michael Bronstein</a>, Twitter</li>
+            <li><a href="https://www.linkedin.com/in/alexandrelung/">Alexandre Lung-Yut-Fong</a>, Twitter</li>
+            <li><a href="https://www.linkedin.com/in/benjaminchamberlain/">Ben Chamberlain</a>, Twitter</li>
+            <li><a href="http://fportman.com">Frank Portman</a>, Twitter</li>
+            <li><a href="http://alykhantejani.github.io/ /">Alykhan Tejani</a>, Twitter</li>
+            <li><a href="https://www.linkedin.com/in/yuanpu-x-712a6353/">Yuanpu Xie</a>, Twitter</li>
+            <li><a href="http://me.net.nz">Jj Hunt</a>, Twitter</li>
+            <li><a href="https://www.linkedin.com/in/wenzhe-shi-74ab6a2b/" target="\_blank">Wenzhe Shi,</a> Twitter</li>
+         </ul>
+         <h1>Advisors <sup><a class="dropup" style="font-size:10px;" href="#top"><span class="caret"></span>
+                  top</a></sup></h1>
+         <ul>
+            <li><a href="https://www.unibz.it/en/faculties/computer-science/phd-computer-science/phd-students/phd/38647-gabriele-sottocornola" target="\_blank">Gabriele Sottocornola</a>, Free University of Bozen-Bolzano, Italy</li>
+               <li><a href="https://www.ec.tuwien.ac.at/user/26467105" target="\_blank">Amra Delic</a>, TU Wien, Austria & University of Sarajevo, Bosnia and Herzegovina</li>
+            <li><a href="https://www.colorado.edu/cmci/people/graduate-students/information-science/jessie-smith" target="\_blank">Jessie Smith</a>, University of Colorado, Boulder</li>
+            <li><a href="http://www2.lsd.ufcg.edu.br/~nazareno/" target="\_blank">Nazareno Andrade</a>, Universidade Federal de Campina Grande, Brazil</li>
+         </ul>
+      </div>
+      <!-- /.container -->
+      <!-- JavaScript -->
+      <script src="./js/jquery-1.11.3.min.js"></script>
+      <script src="./js/bootstrap.min.js"></script>
+      <script src="./js/ekko-lightbox.min.js"></script>
+      <script type="text/javascript">
+         $(document).delegate('*[data-toggle="lightbox"]', 'click', function (event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+         });
+      </script>
+      <script>
+         (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+               (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+               m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+         })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+         ga('create', 'UA-70716117-1', 'auto');
+         ga('send', 'pageview');
+
+      </script>
+   </div>
+</body>
+
+</html>
