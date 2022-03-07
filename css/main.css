@@ -16,7 +16,11 @@ svg:hover {
     text-align: center;
 }
 
-
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+}
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
