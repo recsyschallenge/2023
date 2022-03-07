@@ -59,19 +59,27 @@
          <h1>Dataset<sup><a class="dropup" style="font-size:10px;" href="#top"><span class="caret"></span>
                   top</a></sup></h1>
          <p>
-			The dataset consists of online retail sessions and purchases of fashion items, sampled from a 18-month period.
+			The full dataset consists of 1.1 million online retail sessions in the fashion domain, sampled from a 18-month period. All sessions in the dataset are “purchasing sessions” that resulted in at least one item purchased. The items viewed and purchased are clothing and footwear. The dataset contains content data for each of the items viewed and purchased, this is an extract of Dressipi’s fashion item data and represents descriptive labels assigned to the items such as color, neckline, sleeve length etc. The task is to predict the item that was purchased.
 			</p>
 		<p>
 			The dataset has:
 			<ul>
-				<li>Sessions: The items that were viewed in a session. In this dataset a session is equal to a day, so a session is one user's activity on one day.</li>
-				<li>Purchases: The purchase that happened at the end of the session. One purchased item per session.</li>
-				<li>Item features: The label data of items. Things like “color: green,” “neckline: v-neck,” etc.</li>
+				<li>Sessions: The items that were viewed in a session. In this dataset a session is equal to a day, so a session is one user's activity on one day. Content: session_id, item_id, timestamp.</li>
+				<li>Purchases: The purchase that happened at the end of the session. One purchased item is given per session. Content: session_id, item_id.</li>
+				<li>Item features: The label data of items. Things like “color: green”, “neckline: v-neck”, etc. Content: item_id, feature_category_id, feature_value_id.</li>
 			</ul>			
 		</p>
-		<p>
-			The data is split into a training and test set by date. The test set is one month, the training set is 17 months prior to the test month. The test month is then further randomly split into the “leaderboard” test set, used for the public leaderboard, and the “final” test set which will determine the final winners of the challenge. The task is to submit 100 predictions for each query session in the leaderboard and final test sets.		
-		</p>
+<br>
+		 <h2>Training - Test Split<sup><a class="dropup" style="font-size:10px;" href="#top"><span class="caret"></span>
+                  top</a></sup></h2>
+		 <p>
+			The data is split into a training and test set by date. The test set is one month, the training set is 17 months prior to the test month. The test month is then further randomly split into the “leaderboard” test set, used for the public leaderboard, and the “final” test set which will determine the final winners of the challenge. The task is to submit 100 predictions for each query session in the leaderboard and final test sets. The training set contains 1m sessions, the two test sets contain 50k sessions each.
+		 </p>		
+		<figure>
+			<img src="images/image2.png"
+				 alt="Training - Test Split">
+				 <caption>Fig 1: Training - Test Split</caption>
+		</figure>		
 <br>
 		 <h2>Training Set<sup><a class="dropup" style="font-size:10px;" href="#top"><span class="caret"></span>
                   top</a></sup></h2>
@@ -83,12 +91,12 @@
 		<h2>Test Set<sup><a class="dropup" style="font-size:10px;" href="#top"><span class="caret"></span>
                   top</a></sup></h2>
 		<p>
-			These are the query sessions to generate recommendations for. The input for prediction are the views up to and not including the first view of the item that was bought. The task is to predict the item that was bought.
+			These are the query sessions to generate recommendations for. There are two test sets:
 		</p>
 		<p>
 			<ul>
-				<li>Leaderboard Test Set: Determines the leaderboard position.</li>
-				<li>Final Test set: Determines the final winners.</li>
+				<li>Leaderboard Test Set: Determines the leaderboard position. Evaluated against every time you submit a prediction file.</li>
+				<li>Final Test set: Determines the final winners. Evaluated against once at the end.</li>
 			</ul>			
 		</p>		
 	
@@ -149,14 +157,48 @@
 			<ul>
 				<li>Sessions are anonymous, there is a session_id but no user_id, so you won't know if two sessions are by the same person.</li>
 				<li>The dataset only contains one purchased item per order (chosen at random). This means a session might have resulted in the purchase of a shirt and a trouser but in the dataset you can only see the shirt purchase. This is a limitation but the size of the dataset should be sufficiently large to compensate for it.</li>
+				<li>A large chunk of test sessions have only one or two item views as input for prediction. This is partly due to the reality of a lot of sessions being very short in the underlying data and partly due to how the challenge dataset was constructed, see Details On Data Construction below.
 				<li>Content data
 					<ul>
 						<li>Content data (garment labels data) is supplied for all items in the dataset. Some candidate items might not have any data in the training sessions or purchases but they will have content data.</li>
 						<li>Content data is representative of a “category: value” taxonomy. E.g. “color: blue” or “neckline: v-neck”. Most feature categories will only have one value for a garment, however, there are some that have multiple values. For example an item might have both “secondary_color: black” and “secondary_color: white”. In these cases an item will have two or more entries (rows) with the same category id and different value ids.</li>
-						<li>Item features are distinct by type of item. A feature_category_id represents an aspect of the item such as "color", the feature_value_id is the value for that aspect, e.g. "blue". Some items may not share any feature_cateogry_ids if they are different types of items, for example trousers will share almost no category ids with shirts. Even things like color will not be shared, the color aspect for trousers and shirts are two different feature_category_ids. This is because we have learnt that if you like red shirts it does not mean you like red trousers, so we represent trouser color and shirt color as two different feature_category_ids.</li>
+						<li>Item features are distinct by type of item. Some items may not share any feature_category_ids if they are different types of items, for example trousers will share almost no category ids with shirts. Even things like color will not be shared: the color aspect for trousers and shirts are two different feature_category_ids. This is because we have learnt that if you like red shirts it does not automatically mean you like red trousers, although it could.</li>
 					</ul>
 				</li>
 			</ul>
+      </div>
+<br><br>	  
+
+      <div class="lead">
+         <h1>Details On Dataset Construction<sup><a class="dropup" style="font-size:10px;" href="#top"><span class="caret"></span>
+                  top</a></sup></h1>
+		<h2>Sessions and Purchases<sup><a class="dropup" style="font-size:10px;" href="#top"><span class="caret"></span>
+                  top</a></sup></h2>
+		<p>
+			The dataset consists only of “purchasing sessions”, which are sessions that resulted in at least one item being bought. For each order placed we have chosen one purchased item at random to be the purchase of the session. The view activity of the session is then the item views up to and not including the first view of the item that was purchased. The diagram below shows how the purchasing sessions were constructed from the full session and purchasing data.
+		</p>
+		<figure>
+			<img src="images/image1.png"
+				 alt="Sessions and Purchases">
+				 <caption>Fig 2: Sessions and Purchases</caption>
+		</figure>			
+<br>
+		<h2>Constructing Data for Test Sessions<sup><a class="dropup" style="font-size:10px;" href="#top"><span class="caret"></span>
+                  top</a></sup></h2>
+		<p>
+			For each test session the input for prediction are the first x% of views in the session, where this is a randomly selected value between 50% and 100% for each session. The maximum length of the input data for a session would be up to and not including the first view of the item that was bought. You won’t know at which point each test sessions was cut.
+		</p>
+		<p>
+			The reasoning behind the random cuts is that in the real system recommendations are shown to the user at various points in their session. We want a recommender that can predict the item the user will purchase as early as possible in the session, but we have to balance that with having more information available for better accuracy of predictions as the session goes on. At some point the recommendation may no longer be useful because the user has worked through a sufficiently long journey (in the existing ranking of items presented to them) and is about to find the item they want themselves, without the intervention of the recommender. The random cuts in the test sessions are an effort to have the challenge evaluation be as close as possible to what success means in reality without making it overly complex. Please note that no cuts like this are applied to the training data and you have all item views leading up to the purchase there.
+		</p>
+		<p>
+			The diagram below shows how the input data for prediction is constructed from the hidden full test set.
+		</p>
+		<figure>
+			<img src="images/image3.png"
+				 alt="Constructing Data for Test Sessions">
+				 <caption>Fig 3: Constructing Data for Test Sessions</caption>
+		</figure>			
       </div>
       <!-- /.container -->
       <!-- JavaScript -->
