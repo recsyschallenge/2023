@@ -163,9 +163,10 @@
                <li>
                   Content data
                   <ul>
-                     <li>Content data (garment labels data) is supplied for all items in the dataset. Some candidate items might not have any data in the training sessions or purchases but they will have content data.</li>
+					 <li>Content data (garment labels data) is supplied for all items in the dataset. Some candidate items might not have any data in the training sessions or purchases but they will have content data.</li>
                      <li>Content data is representative of a “category: value” taxonomy. E.g. “color: blue” or “neckline: v-neck”. Most feature categories will only have one value for a garment, however, there are some that have multiple values. For example an item might have both “secondary_color: black” and “secondary_color: white”. In these cases an item will have two or more entries (rows) with the same category id and different value ids.</li>
-                     <li>Item features are distinct by type of item. Some items may not share any feature_category_ids if they are different types of items, for example trousers will share almost no category ids with shirts. Even things like color will not be shared: the color aspect for trousers and shirts are two different feature_category_ids. This is because we have learnt that if you like red shirts it does not automatically mean you like red trousers, although it could.</li>
+                     <li>Some items may not share any feature_category_ids if they are different types of items, for example trousers will share very few category ids with shirts and will share even less category ids with sandals.</li>
+                     <li>Items will have a different number of label assignments depending on how complicated they are. A basic black t-shirt will have less feature category ids, and thus less rows in the content data, compared to an evening dress with intricate details.</li>
                   </ul>
                </li>
             </ul>
