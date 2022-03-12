@@ -96,8 +96,17 @@
          <p>
             The content data consists of descriptive labels of the items (such as color, length, neckline, sleeve style, etc.). The labels have been assigned using Dressipi’s human-in-the-loop system where fashion experts review, correct and confirm the correctness of the labels, so we expect this to be a dataset of high accuracy and quality.
          </p>
+	 <figure>
+            <img src="images/125444AA-F22E-4618-9C31-DE7B0B9A6646.jpeg"
+               alt="Example Session and Purchase Data">
+            <caption>Fig 1: Example Session and Purchase Data</caption>
+         </figure>      
          <p>
-            In the fashion domain items churn at a very high rate and using content data is essential. In this challenge a portion of the test purchases we evaluate against will be newer items that have little or no past interaction data. However, these candidate items will have label data and can be recommended successfully if we can identify which labels a user session has a preference for. This is an accurate reflection of what happens in the real world, where items are available to us to preview and apply content data before they go live, but when they go live we have to be able to recommend them accurately straight away.
+            It’s important to be able to make recommendations that respond to what the user is doing during the current session to create the best experience possible that results in a purchase. Nuances of the fashion domain make accurate in-session predictions more critical than in other domains:
+         <ul>
+		 <li>On average 51% of total visitors are new (Dressipi Data) which means there is no historical data available and we solely have to rely on current session activity. </li>
+		 <li>Even for the other half of visitors that have historical data, trends and other external factors change user preferences much more quickly than in other domains, meaning the historical data might no longer be representative of the user’s interests on a case-to-case basis. This places even more importance on having a highly accurate in-session recommender that can be pulled into the mix.</li> 
+		 <li>Sessions can be pretty short so we need to be able to make accurate predictions as early as possible, before the user bounces.</li>
          </p>
          <br>
          <h2>Dataset<sup><a class="dropup" style="font-size:10px;" href="#top"><span class="caret"></span>
@@ -127,7 +136,7 @@
          <figure>
             <img src="images/image4.png"
                alt="Example Content Data">
-            <caption>Fig 1: Example Content Data</caption>
+            <caption>Fig 2: Example Content Data</caption>
          </figure>
          <br>		
          <h2>Rules<sup><a class="dropup" style="font-size:10px;" href="#top"><span class="caret"></span>
