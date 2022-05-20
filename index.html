@@ -149,7 +149,8 @@
             <li>Anyone (18+) can participate</li>
             <li>Do not use external data feeds</li>
             <li>Do not use models trained on external data</li>
-            <li>Do not use data from the test sessions in model training, use test session data only in the prediction step</li>
+            <li>When you train the model, only use the data from the training file. Do not use any data from the "leaderboard" or "final" test files</li>
+            <li>When predicting, treat each test session independently of all other test session (i.e., when predicting for test session B, the model should not have any knowledge of test session A. Even if that came before it in terms of time-stamp)</li>		 
          </ul>
          </p>	
          <p>
