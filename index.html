@@ -4,12 +4,12 @@
       <meta http-equiv="content-type" content="text/html; charset=utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="RecSys Challenge 2022">
+      <meta name="description" content="RecSys Challenge 2023">
       <meta name="keywords"
          content="Recommender Systems, RecSys Challenge, Social Media, Dressipi, Fashion recommendations">
-      <meta name="author" content="RecSysChallenge 2022 Organizers">
+      <meta name="author" content="RecSysChallenge 2023 Organizers">
       <!-- <link rel="icon" href="http://recsys.acm.org/wp-content/themes/primo-wp/favicon.ico"> -->
-      <title>RecSys Challenge 2022</title>
+      <title>RecSys Challenge 2023</title>
       <!-- CSS -->
       <link href="./css/bootstrap.min.css" rel="stylesheet">
       <link href="./css/ekko-lightbox.min.css" rel="stylesheet">
@@ -65,81 +65,74 @@
             top</a></sup>
          </h1>
          <p>
-            The RecSys Challenge 2022 is organized by Nick Landia (<a href="https://dressipi.com/" target="_blank">Dressipi</a>), Bruce Ferwerda (<a href="https://ju.se/en" target="_blank">Jönköping University, Sweden</a>), Saikishore Kalloori (<a href="https://ethz.ch/en.html" target="_blank">ETH Zürich, Switzerland</a>), and Abhishek Srivastava (<a href="#" target="_blank">IIM Visakhapatnam, India</a>). 
+            The RecSys Challenge 2023 is organized by Nick Landia (<a href="https://dressipi.com/" target="_blank">Dressipi</a>), Bruce Ferwerda (<a href="https://ju.se/en" target="_blank">Jönköping University, Sweden</a>), Saikishore Kalloori (<a href="https://ethz.ch/en.html" target="_blank">ETH Zürich, Switzerland</a>), and Abhishek Srivastava (<a href="#" target="_blank">IIM Visakhapatnam, India</a>). 
          </p>
          <br>
          <h2>Dressipi<sup><a class="dropup" style="font-size:10px;" href="#top"><span class="caret"></span>
             top</a></sup>
          </h2>
          <p>
-            Dressipi are the fashion-AI experts, providing product and outfit recommendations to leading global retailers.
-         </p>
-         <p>
-            Our recommendations enable retailers to create new product discovery experiences that are personalized and inspiring and can be used at all steps of the shopper journey. 
-         </p>
-         <p>
-            Our algorithms enable retailers to make better buying and merchandising decisions by more accurately forecasting product demand and size ratios. 
-         </p>
-         <p>
-            Our focus is to provide the world’s best apparel recommendations and predictions. We do this by taking a domain specific approach across the data we collect and create, how we structure that data and the models we build. Everything we do is optimized to handle the nuances of fashion. 
-         </p>
-         <p>
-            We work with brands across the US, UK, Europe, and Australia and outperform every competitor when A/B tested.
-         </p>
+            Online advertising has been a multi-billion dollar industry since the early 2000 and has played a significant role in the growth of the internet. The key advantage of online advertising over conventional mass advertising is its inherent ability to personalize to users, democratizing advertising and hence enabling businesses of all sizes to participate, and provide measurable impact of money spent to the advertisers. Over the past two decades, the nature of online advertising has also evolved tremendously from pure banner based advertising where advertisers were charged based on the number of ad impressions to deep funnel optimizations where advertisers can optimize for the eventual sales.
+The efficacy of deep funnel optimization required extensive personalization and hence opened up rich problems in the space of real time auction design, large scale machine learning, modeling delayed feedback, behavioral understanding. As these systems matured, we also started developing a rich understanding about the need to preserve user privacy, ensure AI fairness and prevent adversarial exploitation of the platform.
+In this challenge, we aim to provide a real world ad dataset from the Sharechat and Moj apps to act as a benchmark for research into deep funnel optimization with focus on user privacy.
+
+	      </p>
          <br>
          <h2>Challenge Task<sup><a class="dropup" style="font-size:10px;" href="#top"><span class="caret"></span>
             top</a></sup>
-         </h2>
+	 </h2>
          <p>
-            This year’s challenge focuses on fashion recommendations. When given user sessions, purchase data and content data about items, can you accurately predict which fashion item will be bought at the end of the session? 
-         </p>
-         <p>
-            The content data consists of descriptive labels of the items (such as color, length, neckline, sleeve style, etc.). The labels have been assigned using Dressipi’s human-in-the-loop system where fashion experts review, correct and confirm the correctness of the labels, so we expect this to be a dataset of high accuracy and quality.
-         </p>
-	 <figure>
-            <img src="images/session_purchase_data.jpeg"
-               alt="Example Session and Purchase Data">
-            <caption>Fig 1: Example Session and Purchase Data</caption>
-         </figure>     
+            The dataset corresponds to roughly 10M random users who visited Sharechat + Moj app over a period of 3 months. We have sampled the activity of each user to generate 10 impressions corresponding to each user. Our target variable is whether there was an install for an app by the user or not. 
+	 </p>     
 	 <br>
          <p>
-            It’s important to be able to make recommendations that respond to what the user is doing during the current session to create the best experience possible that results in a purchase. Nuances of the fashion domain make accurate in-session predictions more critical than in other domains:
-         <ul>
-	    <li>On average 51% of total visitors are new (Dressipi Data) which means there is no historical data available and we solely have to rely on current session activity. </li>
-	    <li>Even for the other half of visitors that have historical data, trends and other external factors change user preferences much more quickly than in other domains, meaning the historical data might no longer be representative of the user’s interests on a case-to-case basis. This places even more importance on having a highly accurate in-session recommender that can be pulled into the mix.</li> 
-	    <li>Sessions can be pretty short so we need to be able to make accurate predictions as early as possible, before the user bounces.</li>
-	 </ul>
-         </p>
+            To represent a user, there are several features that are provided.
+Demographic features: These include age, gender, and geographic location from where the user is accessing the Sharechat/Moj app. The sampling of the users in (1) is done such that we have approximately uniform distribution of users across the demographic features.The location of the user is hashed to a 32 bit to anonymize the data.
+Content preference embeddings: These embeddings are trained based on the users consumption of the various non-ad content on the Sharechat/Moj app.
+App affinity embeddings: These embeddings are trained based on the past apps installed by the user on our platform. 
+	        </p>
+	      
+	      <p>
+		      We also have features corresponding to ads
+Ad categorical features: These features represent different characteristics of an ad including the size of the ad, the category of the ad etc. The features are hashed to 32 bit to anonymize the data.
+Ad embedding: These represent the actual video/image content of the ad.
+
+	      </p>
+	      
+	      <p>
+		      To capture the historical interactions between users and ads, we also provide
+Count features: These features represent the user interaction with ads, advertisers, and categories of advertisers over different lengths of time window.
+
+	      </p>
+	      <p>
+		      Every row of the data has an associated numeric id and represents an ad impression shown to the user and whether it resulted in a click on the ad and subsequently an install or not.
+
+	      </p>
+	      <p>
+		      We do not provide semantics of the individual features.
+	      </p>
+	      <p>
+		      The training data consists of subsampled impressions/clicks/installs from the past 2 weeks and the aim is to predict the probability of install for the 15th day.
+
+	      </p>
+	      <p>
+		      The evaluation will be done based on the log-loss.
+	      </p>
+	      
          <br>
          <h2>Dataset<sup><a class="dropup" style="font-size:10px;" href="#top"><span class="caret"></span>
             top</a></sup>
          </h2>
-         <p>
+         <!--p>
             As part of this challenge, Dressipi will be releasing a public dataset of 1.1 million online retail sessions that resulted in a purchase. In addition, all items in the dataset have been labeled with content data and the labels are supplied. We refer to the label data as item features. The dataset is sampled and anonymized.
-         </p>
-         <p>
+         </p-->
+         <!--p>
          <ul>
             <li>Sessions: The items that were viewed in a session. In this dataset a session is equal to a day, so a session is one user's activity on one day.</li>
             <li>Purchases: The purchase that happened at the end of the session. One purchased item per session.</li>
             <li>Item features: The label data of items. Things like “color: green,” “neckline: v-neck,” etc.</li>
          </ul>
-         </p>
-         <p>
-            The image below is an illustration of what the content data could look like for a given dress (this is a made-up example). In the dataset the label data has been anonymised by using ids: you will not get the cleartext labels like “neckline: v-neck” but rather ids representing the same data.
-         </p>
-         <p>
-            A more detailed description can be found by clicking on the button below.
-         </p>
-         <div class="wrapper">
-            <a href="dataset.html" target="_blank">
-            <button type="button" class="btn btn-lg  btn-primary button">Dataset description</button>
-            </a>
-         </div>
-         <figure>
-            <img src="images/image4.png"
-               alt="Example Content Data">
-            <caption>Fig 2: Example Content Data</caption>
-         </figure>
+         </p-->
          <br>		
          <h2>Rules<sup><a class="dropup" style="font-size:10px;" href="#top"><span class="caret"></span>
             top</a></sup>
